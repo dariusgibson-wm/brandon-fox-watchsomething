@@ -51,7 +51,6 @@ export default class AllTitles extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     let movieList;
     let tvList;
     let noList = <h1>Please select a valid movie/TV Show</h1>;
