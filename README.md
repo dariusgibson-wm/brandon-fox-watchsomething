@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+NOTE FROM BRANDON-API Key for RAPID API has been put in ENV (backend has been built). Please use your personal RAPID API key (create a .env file in root a la .env.example) or contact me for mine.
+
+Express/React is set up concurrently now. Just use npm start and wait for both the server and client to spin up.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -24,12 +24,11 @@ export default class AllTitles extends React.Component {
     axios
       .request({
         method: 'GET',
-        url: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
+        url: 'http://localhost:3001/api/alltitles',
         params: { type, title: this.state.title },
         headers: {
           'x-rapidapi-host': 'movies-tvshows-data-imdb.p.rapidapi.com',
-          'x-rapidapi-key':
-            'a394fec0f6msh0eb3bb896bc76b3p13026cjsne014cc19422f',
+          'x-rapidapi-key': process.env.RAPIDAPI_KEY,
         },
       })
       .then((res) => {

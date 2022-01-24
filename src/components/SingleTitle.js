@@ -14,12 +14,11 @@ export default class AllTitles extends React.Component {
     axios
       .request({
         method: 'GET',
-        url: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
-        params: { type: type, imdb: this.props.match.params.id },
+        url: 'http://localhost:3001/api/singletitle',
+        params: { type, imdb: this.props.match.params.id },
         headers: {
           'x-rapidapi-host': 'movies-tvshows-data-imdb.p.rapidapi.com',
-          'x-rapidapi-key':
-            'a394fec0f6msh0eb3bb896bc76b3p13026cjsne014cc19422f',
+          'x-rapidapi-key': process.env.RAPIDAPI_KEY,
         },
       })
       .then((res) => {
@@ -63,7 +62,7 @@ export default class AllTitles extends React.Component {
       <div>
         <header>
           <h2>
-            <i class="ion-plane"></i>
+            <i className="ion-plane"></i>
           </h2>
           <nav>
             <ul>
