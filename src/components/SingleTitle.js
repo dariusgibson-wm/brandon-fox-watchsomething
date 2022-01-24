@@ -49,7 +49,6 @@ export default class AllTitles extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const {
       title,
       directors,

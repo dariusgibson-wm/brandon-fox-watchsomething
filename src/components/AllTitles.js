@@ -9,7 +9,7 @@ export default class AllTitles extends React.Component {
     this.state = {
       movies: [],
       shows: [],
-      title: 'Your viewing awaits',
+      title: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,31 +44,10 @@ export default class AllTitles extends React.Component {
   }
 
   handleSubmit(event) {
-    //alert('A name was submitted: ' + this.state.title);
     event.preventDefault();
 
     this.callIMDB('get-movies-by-title');
     this.callIMDB('get-shows-by-title');
-
-    axios
-      .request({
-        method: 'GET',
-        url: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
-        params: { type: 'get-shows-by-title', title: this.state.title },
-        headers: {
-          'x-rapidapi-host': 'movies-tvshows-data-imdb.p.rapidapi.com',
-          'x-rapidapi-key':
-            'a394fec0f6msh0eb3bb896bc76b3p13026cjsne014cc19422f',
-        },
-      })
-      .then((res) => {
-        const movies = res.data.movie_results;
-        this.setState({ movies: movies, title: this.state.title });
-      });
-  }
-
-  componentDidMount() {
-    console.log('mounted');
   }
 
   render() {
@@ -76,6 +55,7 @@ export default class AllTitles extends React.Component {
     let movieList;
     let tvList;
     let noList = <h1>Please select a valid movie/TV Show</h1>;
+
     if (this.state.movies) {
       movieList = (
         <ul>
@@ -98,7 +78,6 @@ export default class AllTitles extends React.Component {
           ))}{' '}
         </ul>
       );
-    } else {
     }
 
     return (
@@ -106,22 +85,16 @@ export default class AllTitles extends React.Component {
         <div>
           <div className="cover">
             <h1>Discover what's out there.</h1>
-            {/* <form className="flex-form">
-              <label hmtlFor="from">
-                <i className="ion-location"></i>
-              </label>
-              <input type="submit" value="Search"></input>
-            </form> */}
             <form className="flex-form" onSubmit={this.handleSubmit}>
               <label htmlFor="from">
                 <i className="ion-location"></i>
               </label>
-
               <input
                 type="text"
                 name="title"
                 value={this.state.title}
                 onChange={this.handleChange}
+                placeholder="Your Viewing Awaits"
               />
               <input type="submit" value="Submit" />
             </form>
